@@ -1,4 +1,4 @@
-import { allUniqueCharacters } from '../allUniqueCharacters.js'
+import { allUniqueCharacters } from '../src/allUniqueCharacters'
 
 describe('allUniqueCharacters', () => {
   test('should return true for a string with all unique characters', () => {

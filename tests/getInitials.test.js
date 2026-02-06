@@ -1,4 +1,4 @@
-import { getInitials } from '../getInitials.js'
+import { getInitials } from '../src/getInitials.js'
 
 test('getInitials', () => {
   expect(getInitials('World Wide Web')).toBe('WWW')
