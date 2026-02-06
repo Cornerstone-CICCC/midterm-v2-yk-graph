@@ -1,10 +1,14 @@
 {
   "name": "midterm-v2-yk-graph",
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
-    "test": "jest"
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest"
   },
   "dependencies": {
     "jest": "^30.2.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.1"
   }
 }
