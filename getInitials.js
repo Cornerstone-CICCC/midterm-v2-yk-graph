@@ -5,14 +5,24 @@ Instruction
 Create a function named getInitials that receives a string of words. It should return a new string containing the first letter of each word, capitalized.
 */
 
-const getInitials = function (name) {
-  // Place your solution here
-};
+export const getInitials = function (name) {
+  if (name === '') {
+    throw new Error('Input cannot be empty')
+  }
 
-console.log(getInitials("World Wide Web")); // "WWW"
-console.log(getInitials("central intelligence agency")); // "CIA"
-console.log(getInitials("john doe")); // "JD"
-console.log(getInitials("New York City")); // "NYC"
-console.log(getInitials("  spaced   out ")); // "SO"
+  const stringArray = name
+    .trim()
+    .split(' ')
+    .filter((word) => word !== '')
 
-module.exports = getInitials;
+  console.log(stringArray)
+
+  const initialsArray = stringArray.map((word) => word[0].toUpperCase())
+  return initialsArray.join('')
+}
+
+console.log(getInitials('World Wide Web')) // "WWW"
+console.log(getInitials('central intelligence agency')) // "CIA"
+console.log(getInitials('john doe')) // "JD"
+console.log(getInitials('New York City')) // "NYC"
+console.log(getInitials('  spaced   out ')) // "SO"
