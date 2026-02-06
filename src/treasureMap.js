@@ -10,17 +10,34 @@ It must return an object with this structure:
 }
 */
 
-const treasureMap = function (grid) {
-  // Place your solution here
-};
+export const treasureMap = function (grid) {
+  const treasureCount = grid.reduce((acc, row) => {
+    const countInRow = row.filter((cell) => cell === 'X').length
+    return acc + countInRow
+  }, 0)
+
+  const coordinates = []
+  for (const row of grid) {
+    row.forEach((cell, index) => {
+      if (cell === 'X') {
+        coordinates.push([index, grid.indexOf(row)])
+      }
+    })
+  }
+
+  return {
+    treasureCount,
+    coordinates,
+  }
+}
 
 const map1 = [
-  ["O", "O", "X", "O"],
-  ["O", "X", "O", "O"],
-  ["O", "O", "O", "X"],
-];
+  ['O', 'O', 'X', 'O'],
+  ['O', 'X', 'O', 'O'],
+  ['O', 'O', 'O', 'X'],
+]
 
-console.log(treasureMap(map1));
+console.log(treasureMap(map1))
 // Output:
 // {
 //   treasureCount: 3,
@@ -28,22 +45,20 @@ console.log(treasureMap(map1));
 // }
 
 const map2 = [
-  ["O", "O"],
-  ["O", "O"],
-];
-console.log(treasureMap(map2));
+  ['O', 'O'],
+  ['O', 'O'],
+]
+console.log(treasureMap(map2))
 // { treasureCount: 0, coordinates: [] }
 
 const map3 = [
-  ["X", "O", "O"],
-  ["O", "O", "O"],
-  ["X", "X", "O"],
-  ["O", "O", "X"],
-];
-console.log(treasureMap(map3));
+  ['X', 'O', 'O'],
+  ['O', 'O', 'O'],
+  ['X', 'X', 'O'],
+  ['O', 'O', 'X'],
+]
+console.log(treasureMap(map3))
 // {
 //   treasureCount: 4,
 //   coordinates: [ [0, 0], [0, 2], [1, 2], [2, 3] ]
 // }
-
-module.exports = treasureMap;
